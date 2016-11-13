@@ -15,11 +15,16 @@ namespace Chip8.Core
         public short Offset => _offset;
         public string OffsetAsHex => Convert.ToString(Offset, 16);
 
+        public Address(string addressOffsetAsHex)
+            : this(short.Parse(addressOffsetAsHex, System.Globalization.NumberStyles.HexNumber))
+        {
+        }
+
         public Address(short addressOffset)
         {
             if (addressOffset > 4095)
             {
-                throw new ArgumentOutOfRangeException("Address offset must be < 4096.");
+                throw new ArgumentOutOfRangeException("Address offset must be < 4096 (FFFF).");
             }
 
             _offset = addressOffset;
