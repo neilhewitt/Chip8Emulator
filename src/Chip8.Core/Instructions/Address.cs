@@ -1,0 +1,33 @@
+﻿using System;
+using System.Linq;
+using System.Collections;
+
+namespace Chip8.Core
+{
+    public class Address
+    {
+        private short _offset;
+
+        public Nybble First { get; }
+        public Nybble Second { get; }
+        public Nybble Third { get; }
+
+        public short Offset => _offset;
+        public string OffsetAsHex => Convert.ToString(Offset, 16);
+
+        public Address(short addressOffset)
+        {
+            if (addressOffset > 4095)
+            {
+                throw new ArgumentOutOfRangeException("Address offset must be < 4096.");
+            }
+
+            _offset = addressOffset;
+
+            string addressAsBinaryString = Convert.ToString(addressOffset, 2).PadLeft(12);
+            First = new Nybble(addressAsBinaryString.Substring(0, 4));
+            Second = new Nybble(addressAsBinaryString.Substring(4, 4));
+            Third = new Nybble(addressAsBinaryString.Substring(8, 4));
+        }
+    }
+}
