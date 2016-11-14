@@ -7,6 +7,16 @@ namespace Chip8.Core
 {
     public class AssignInstruction : RegisterInstructionWithValue
     {
+        public override string ToString()
+        {
+            return "6" + RegisterIndexAsHex + ValueAsHex;
+        }
+
+        public override string ToAssembler()
+        {
+            return "LD V" + RegisterIndexAsHex + ", " + ValueAsHex;
+        }
+
         public AssignInstruction(char registerIndexAsHex, byte value)
             : base(registerIndexAsHex, value)
         { }

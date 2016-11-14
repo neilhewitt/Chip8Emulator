@@ -13,7 +13,7 @@ namespace Chip8.Core
         public Nybble Third { get; }
 
         public short Offset => _offset;
-        public string OffsetAsHex => Convert.ToString(Offset, 16);
+        public string OffsetAsHex => Convert.ToString(Offset, 16).ToUpper().PadLeft(3, '0');
 
         public Address(string addressOffsetAsHex)
             : this(short.Parse(addressOffsetAsHex, System.Globalization.NumberStyles.HexNumber))
@@ -29,7 +29,7 @@ namespace Chip8.Core
 
             _offset = addressOffset;
 
-            string addressAsBinaryString = Convert.ToString(addressOffset, 2).PadLeft(12);
+            string addressAsBinaryString = Convert.ToString(addressOffset, 2).PadLeft(12, '0');
             First = new Nybble(addressAsBinaryString.Substring(0, 4));
             Second = new Nybble(addressAsBinaryString.Substring(4, 4));
             Third = new Nybble(addressAsBinaryString.Substring(8, 4));

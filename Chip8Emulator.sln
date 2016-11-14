@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Chip8.Core", "src\Chip8.Core\Chip8.Core.xproj", "{2C4294C2-1546-4111-92F4-21DB0B62B0D6}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Chip8.Tests", "src\Chip8.Tests\Chip8.Tests.xproj", "{7E53AB58-1768-4F72-A904-13CF45D13140}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 		{2C4294C2-1546-4111-92F4-21DB0B62B0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C4294C2-1546-4111-92F4-21DB0B62B0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C4294C2-1546-4111-92F4-21DB0B62B0D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E53AB58-1768-4F72-A904-13CF45D13140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E53AB58-1768-4F72-A904-13CF45D13140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E53AB58-1768-4F72-A904-13CF45D13140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E53AB58-1768-4F72-A904-13CF45D13140}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2C4294C2-1546-4111-92F4-21DB0B62B0D6} = {CE37ACDF-B8E1-4FC1-9D41-3BB865F677E7}
+		{7E53AB58-1768-4F72-A904-13CF45D13140} = {CE37ACDF-B8E1-4FC1-9D41-3BB865F677E7}
 	EndGlobalSection
 EndGlobal

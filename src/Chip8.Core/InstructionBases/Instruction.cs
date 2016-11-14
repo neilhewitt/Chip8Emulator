@@ -14,6 +14,11 @@ namespace Chip8.Core
             return "0000";
         }
 
+        public virtual string ToAssembler()
+        {
+            return "END";
+        }
+
         public Instruction()
         {
 

@@ -13,7 +13,7 @@ namespace Chip8.Core
         public TwoRegisterInstruction(char registerIndexAsHex, char register2IndexAsHex)
             : base(registerIndexAsHex)
         {
-            Register2IndexAsHex = register2IndexAsHex; 
+            Register2IndexAsHex = char.ToUpper(register2IndexAsHex); 
             Register2Index = int.Parse(register2IndexAsHex.ToString(), System.Globalization.NumberStyles.HexNumber);
         }
     }

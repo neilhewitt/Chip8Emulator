@@ -7,6 +7,18 @@ namespace Chip8.Core
 {
     public class RandomAndInstruction : RegisterInstructionWithValue
     {
+        private static Random _random = new Random(DateTime.Now.Millisecond);
+
+        public override string ToString()
+        {
+            return "C" + RegisterIndexAsHex + ValueAsHex;
+        }
+
+        public override string ToAssembler()
+        {
+            return "ADDRAND V" + RegisterIndexAsHex + ", " + ValueAsHex;
+        }
+
         public RandomAndInstruction(char registerIndexAsHex, byte value) 
             : base(registerIndexAsHex, value)
         {

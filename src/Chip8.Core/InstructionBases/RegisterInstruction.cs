@@ -12,7 +12,7 @@ namespace Chip8.Core
 
         public RegisterInstruction(char registerIndexAsHex)
         {
-            RegisterIndexAsHex = registerIndexAsHex;
+            RegisterIndexAsHex = char.ToUpper(registerIndexAsHex);
             RegisterIndex = int.Parse(registerIndexAsHex.ToString(), System.Globalization.NumberStyles.HexNumber);
         }
     }

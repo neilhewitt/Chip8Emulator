@@ -10,6 +10,16 @@ namespace Chip8.Core
         public override char Prefix => '1';
         public Address Address { get; }
 
+        public override string ToString()
+        {
+            return "1" + Address.OffsetAsHex;
+        }
+
+        public override string ToAssembler()
+        {
+            return "JMP" + " " + Address.OffsetAsHex;
+        }
+
         public JumpInstruction(Address address)
         {
             Address = address;
