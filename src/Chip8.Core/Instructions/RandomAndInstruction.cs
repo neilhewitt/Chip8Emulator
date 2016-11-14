@@ -16,7 +16,7 @@ namespace Chip8.Core
 
         public override string ToAssembler()
         {
-            return "ADDRAND V" + RegisterIndexAsHex + ", " + ValueAsHex;
+            return "ADDRAND\tV" + RegisterIndexAsHex + ", " + ValueAsHex;
         }
 
         public RandomAndInstruction(char registerIndexAsHex, byte value) 

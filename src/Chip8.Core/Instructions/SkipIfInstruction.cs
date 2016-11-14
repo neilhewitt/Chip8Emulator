@@ -14,7 +14,7 @@ namespace Chip8.Core
 
         public override string ToAssembler()
         {
-            return "SKIPIF V" + RegisterIndexAsHex + ", " + ValueAsHex;
+            return "SKIPIF\tV" + RegisterIndexAsHex + ", " + ValueAsHex;
         }
 
 

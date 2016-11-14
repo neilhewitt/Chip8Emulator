@@ -30,10 +30,11 @@ namespace Chip8.Core
 
         public string ToAssembler()
         {
+            int index = 0;
             StringBuilder builder = new StringBuilder();
             foreach (Instruction instruction in Instructions)
             {
-                builder.Append(instruction.ToAssembler() + "\n");
+                builder.Append(index++.ToString().PadLeft(6, '0') + "\t" + instruction.ToAssembler() + "\t\n");
             }
 
             return builder.ToString();

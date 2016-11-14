@@ -14,7 +14,7 @@ namespace Chip8.Core
 
         public override string ToAssembler()
         {
-            return "LD V" + RegisterIndexAsHex + ", " + ValueAsHex;
+            return "LD\tV" + RegisterIndexAsHex + ", " + ValueAsHex;
         }
 
         public AssignInstruction(char registerIndexAsHex, byte value)

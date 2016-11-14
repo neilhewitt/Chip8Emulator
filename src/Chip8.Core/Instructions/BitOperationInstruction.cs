@@ -32,8 +32,8 @@ namespace Chip8.Core
                 default: opcode = "UNKNOWN"; break;
             }
 
-            if (OperationIndex == 7) return opcode + " V" + Register2IndexAsHex + ", V" + RegisterIndexAsHex; // special case
-            return opcode + " V" + RegisterIndexAsHex + ", V" + Register2IndexAsHex;
+            if (OperationIndex == 7) return opcode + "\tV" + Register2IndexAsHex + ", V" + RegisterIndexAsHex; // special case
+            return opcode + "\tV" + RegisterIndexAsHex + ", V" + Register2IndexAsHex;
         }
 
 

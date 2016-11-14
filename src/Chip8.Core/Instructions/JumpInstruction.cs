@@ -17,7 +17,7 @@ namespace Chip8.Core
 
         public override string ToAssembler()
         {
-            return "JMP" + " " + Address.OffsetAsHex;
+            return "JMP\t" + Address.OffsetAsHex;
         }
 
         public JumpInstruction(Address address)
