@@ -38,7 +38,7 @@ namespace Chip8.Tests
 
             vm.Run(program, 500);
 
-            Console.WriteLine("\n\nProgram ended. Press any key to exit.");
+            Console.WriteLine("Program ended. Press any key to exit.");
             Console.ReadKey();
         }
 
