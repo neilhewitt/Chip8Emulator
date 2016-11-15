@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Chip8.Core
@@ -21,7 +22,7 @@ namespace Chip8.Core
         public event EventHandler<VirtualMachine> Stopped;
         public event EventHandler<VirtualMachine> BeforeProgramEnd;
 
-        public void Run(Program program)
+        public void Run(Program program, int delayAfterEachInstructionInMilliseconds = 0)
         {
             BeforeProgramStart(null, this);
             _running = true;
@@ -34,6 +35,10 @@ namespace Chip8.Core
                 BeforeInstructionExecute(null, this);
                 ProgramCounter++;
                 instruction.Execute(this);
+                if (delayAfterEachInstructionInMilliseconds > 0)
+                {
+                    Thread.Sleep(delayAfterEachInstructionInMilliseconds);
+                }
                 AfterInstructionExecute(null, this);
             }
 

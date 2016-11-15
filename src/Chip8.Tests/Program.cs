@@ -11,6 +11,7 @@ namespace Chip8.Tests
     public class Program
     {
         private static byte[] _lastValues;
+        private static string[] _source;
 
         public static void Main(string[] args)
         {
@@ -21,6 +22,7 @@ namespace Chip8.Tests
 
             byte[] code = File.ReadAllBytes("chip8test.bin");
             Chip8.Core.Program program = new Decompiler().Decompile(code);
+            _source = program.ToAssembler().Split('\n').Take(program.Instructions.Count).ToArray();
             Console.WriteLine("\n" + program.ToAssembler());
 
             Console.WriteLine("Press any key to run this program...");
@@ -29,9 +31,13 @@ namespace Chip8.Tests
             VirtualMachine vm = new VirtualMachine();
             vm.BeforeInstructionExecute += Vm_BeforeInstructionExecute;
             vm.AfterInstructionExecute += Vm_AfterInstructionExecute;
+
             Console.Clear();
             _lastValues = vm.State;
-            vm.Run(program);
+            Display(vm, _lastValues);
+
+            vm.Run(program, 500);
+
             Console.WriteLine("\n\nProgram ended. Press any key to exit.");
             Console.ReadKey();
         }
@@ -42,7 +48,6 @@ namespace Chip8.Tests
             _lastValues = vm.State;
             //Console.WriteLine("\nPress any key for next instruction");
             //Console.ReadKey();
-            Thread.Sleep(1000);
         }
 
         private static void Vm_BeforeInstructionExecute(object sender, VirtualMachine vm)
@@ -79,7 +84,26 @@ namespace Chip8.Tests
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\nProgram counter: " + vm.ProgramCounter + "\n");
-            Console.WriteLine(vm.CurrentInstructionAsAssembler + "                                          ");
+
+            int start = vm.ProgramCounter >= 4 ? vm.ProgramCounter - 4 : 0;
+            for (int i = start; i < start + 10; i++)
+            {
+                if (i >= 0 && i < _source.Length)
+                {
+                    if (i == vm.ProgramCounter)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+
+                    Console.WriteLine(_source[i] + "                       ");
+                }
+                else
+                {
+                    Console.WriteLine("                               ");
+                }
+
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
     }
 }
