@@ -16,7 +16,7 @@ namespace Chip8.Core
             Register VY = vm.V[Register2Index];
 
             int total; 
-            switch(OperationIndex)
+            switch (OperationIndex)
             {
                 case 0:
                     VX.Assign(VY.Value);

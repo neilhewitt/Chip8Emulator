@@ -29,16 +29,18 @@ namespace Chip8.Core
 
             while (_running && program.Instructions.Count > ProgramCounter)
             {
-
                 Instruction instruction = program.Instructions[ProgramCounter];
                 CurrentInstructionAsAssembler = instruction.ToAssembler();
+
                 BeforeInstructionExecute(null, this);
+
                 ProgramCounter++;
                 instruction.Execute(this);
                 if (delayAfterEachInstructionInMilliseconds > 0)
                 {
                     Thread.Sleep(delayAfterEachInstructionInMilliseconds);
                 }
+
                 AfterInstructionExecute(null, this);
             }
 

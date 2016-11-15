@@ -16,6 +16,7 @@ namespace Chip8.Core
                 return (Value & (1 << index - 1)) == 1;
             }
         }
+
         public byte Value { get; private set; }
         
         public void Assign(byte value)
