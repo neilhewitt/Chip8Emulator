@@ -9,6 +9,12 @@ namespace Chip8.Core
     {
         private static Random _random = new Random(DateTime.Now.Millisecond);
 
+        public override void Execute(VirtualMachine vm)
+        {
+            byte product = (byte)(((byte)_random.Next(0, 255)) & Value);
+            vm.V[RegisterIndex].Assign(product);
+        }
+
         public override string ToString()
         {
             return "C" + RegisterIndexAsHex + ValueAsHex;

@@ -7,6 +7,11 @@ namespace Chip8.Core
 {
     public class AssignInstruction : RegisterInstructionWithValue
     {
+        public override void Execute(VirtualMachine vm)
+        {
+            vm.V[RegisterIndex].Assign(Value);
+        }
+
         public override string ToString()
         {
             return "6" + RegisterIndexAsHex + ValueAsHex;

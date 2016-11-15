@@ -7,6 +7,11 @@ namespace Chip8.Core
 {
     public class SkipIfInstruction : RegisterInstructionWithValue
     {
+        public override void Execute(VirtualMachine vm)
+        {
+            vm.SkipNextInstruction();
+        }
+
         public override string ToString()
         {
             return "3" + RegisterIndexAsHex + ValueAsHex;

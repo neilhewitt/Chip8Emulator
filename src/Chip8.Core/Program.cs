@@ -10,7 +10,7 @@ namespace Chip8.Core
     {
         private IList<Instruction> _instructions;
 
-        public IEnumerable<Instruction> Instructions => _instructions;
+        public IReadOnlyList<Instruction> Instructions => (IReadOnlyList<Instruction>)_instructions;
 
         public void Add(Instruction instruction)
         {

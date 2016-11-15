@@ -10,6 +10,49 @@ namespace Chip8.Core
         public int OperationIndex { get; }
         public char OperationIndexAsHex { get; }
 
+        public override void Execute(VirtualMachine vm)
+        {
+            Register VX = vm.V[RegisterIndex];
+            Register VY = vm.V[Register2Index];
+
+            int total; 
+            switch(OperationIndex)
+            {
+                case 0:
+                    VX.Assign(VY.Value);
+                    break;
+                case 1:
+                    VX.Assign((byte)((byte)VX.Value | (byte)VY.Value));
+                    break;
+                case 2:
+                    VX.Assign((byte)((byte)VX.Value & (byte)VY.Value));
+                    break;
+                case 3:
+                    VX.Assign((byte)((byte)VX.Value ^ (byte)VY.Value));
+                    break;
+                case 4:
+                    total = VX.Value + VY.Value;
+                    vm.VF.Assign((byte)(total > 255 ? 1 : 0));
+                    break;
+                case 5:
+                    total = VX.Value - VY.Value;
+                    vm.VF.Assign((byte)(total < 0 ? 1 : 0));
+                    break;
+                case 6:
+                    vm.VF.Assign(Convert.ToByte(VX[0]));
+                    VX.ShiftRight();
+                    break;
+                case 7:
+                    total = VY.Value - VX.Value;
+                    vm.VF.Assign((byte)(total < 0 ? 1 : 0));
+                    break;
+                case 14:
+                    vm.VF.Assign(Convert.ToByte(VX[7]));
+                    VX.ShiftLeft();
+                    break;
+            }
+        }
+
         public override string ToString()
         {
             return "8" + RegisterIndexAsHex + (OperationIndex == 6 || OperationIndex == 15 ? '0' : Register2IndexAsHex) + OperationIndexAsHex;

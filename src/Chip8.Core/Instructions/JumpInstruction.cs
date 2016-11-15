@@ -7,6 +7,11 @@ namespace Chip8.Core
 {
     public class JumpInstruction : Instruction
     {
+        public override void Execute(VirtualMachine vm)
+        {
+            vm.JumpTo(Address);
+        }
+
         public override char Prefix => '1';
         public Address Address { get; }
 

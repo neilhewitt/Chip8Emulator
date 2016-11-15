@@ -7,5 +7,9 @@ namespace Chip8.Core
 {
     public class EndOfProgramInstruction : Instruction
     {
+        public override void Execute(VirtualMachine vm)
+        {
+            vm.Stop();
+        }
     }
 }
